@@ -58,7 +58,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">ADD BOOK</div>
 					<div class="panel-body">
-						<form role="form" name="bookForm" class="form-horizontal" ng-submit="addBook(newBook)">
+						<form role="form" name="bookForm" class="form-horizontal" ng-submit="addBook(newBook)" novalidate="novalidate">
 
 							 <div class="form-group">
 	   							<label class="control-label col-sm-2" for="id">Id:</label>
@@ -87,7 +87,7 @@
 	      								<input name="lastname" type="text" class="form-control" id="lastname" placeholder="lastname" ng-model="newBook.lastName">
 	    							</div>	    							
 	  						</div>  														
-							<input class="btn btn-primary" type="submit" value="ADD BOOK"> 
+							<input ng-disabled="bookForm.$invalid" class="btn btn-primary" type="submit" value="ADD BOOK"> 
 						</form>
 					</div>
 				</div>
