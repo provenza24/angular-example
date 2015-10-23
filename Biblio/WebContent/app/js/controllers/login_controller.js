@@ -10,9 +10,9 @@ angular.module('AngularTest.Controllers.Login_controller',[]).
 						
 			vm.checkLogin = function() {				
 				$scope.$parent.setAccessType('USER');
-				for (var i = 0; i < vm.length; i++) { 
-					if (vm[i].name == vm.login &&
-							vm[i].password == vm.password) {
+				for (var i = 0; i < vm.users.length; i++) { 
+					if (vm.users[i].name == vm.login &&
+							vm.users[i].password == vm.password) {
 						$scope.$parent.setAccessType('ADMIN');
 					}
 				}				
