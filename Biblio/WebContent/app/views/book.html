@@ -1,0 +1,95 @@
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="col-md-8">
+
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">BOOK LIST</div>
+					<div class="panel-body">
+						<table class="table table-hover table-bordered table-responsive">
+							<thead>
+								<th>id</th>
+								<th>Title</th>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>Creation date</th>
+								<th ng-show="accessType=='ADMIN'"></th>
+							</thead>
+							<thead>
+								<th></th>
+								<th><input type="text" ng-model="bookFilter.title" /></th>
+								<th><input type="text" ng-model="bookFilter.firstName" /></th>
+								<th><input type="text" ng-model="bookFilter.lastName" /></th>
+								<th></th>
+								<th ng-show="accessType=='ADMIN'"></th>
+							</thead>
+
+							<tbody>
+								<tr ng-show="books.length"
+									ng-repeat="book in books | filter:bookFilter">
+									<td>{{book.id}}</td>
+									<td>{{book.title}}</td>
+									<td>{{book.firstName}}</td>
+									<td>{{book.lastName}}</td>
+									<td>{{book.creationDate | date:"MM/dd/yyyy"}}</td>
+									<td ng-show="accessType=='ADMIN'">
+										<button class="btn btn-danger" ng-click="deleteBook(book.id)">Delete</button>
+									</td>
+								</tr>
+								<tr ng-show="books.length==0">
+									<td colspan="6">No book to show</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="col-md-4">
+
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">ADD BOOK</div>
+					<div class="panel-body">
+						<form role="form" name="bookForm">
+							<div class="form-group">
+								<label for="id">Id:</label> <input required type="text"
+									class="form-control" id="id" placeholder="Id"
+									ng-model="newBook.id">
+							</div>
+							<div class="form-group">
+								<label for="title">Title:</label> <input required type="text"
+									class="form-control" id="title" placeholder="Title"
+									ng-model="newBook.title">
+							</div>
+							<div class="form-group">
+								<label for="firstname">Author firstname:</label> <input
+									type="text" class="form-control" id="firstname"
+									placeholder="Author firstname" ng-model="newBook.firstName">
+							</div>
+							<div class="form-group">
+								<label for="lastname">Author lastname:</label> <input
+									type="text" class="form-control" id="lastname"
+									placeholder="Author lastname" ng-model="newBook.lastName">
+							</div>
+
+							<button ng-click="addBook(newBook)" type="submit"
+								class="btn btn-primary">Add Book</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+
