@@ -1,7 +1,0 @@
-thead th {
-	/*background: #006dcc;*/
-}
-
-tr:nth-child(even) {background: #F3ECEC}
-tr:nth-child(odd) {background: #FFF}
-

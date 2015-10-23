@@ -1,13 +1,17 @@
 'use strict';
 angular.module('AngularTest.Controllers.Book_controller',[]).
 	controller("bookCtrl",
-		["$scope",
-		 function($scope) {	
-			$scope.books=[ {id: '1', title:'Central Park' , firstName:'Guillaume', lastName:'Musso', creationDate: '20140313T00:00:00'} ]
-			$scope.books.push({id: '2', title:'La fille de papier' , firstName:'Guillaume', lastName:'Musso', creationDate: '20100521T00:00:00'});
-			$scope.books.push({id: '3', title:"L'appel de l'ange" , firstName:'Guillaume', lastName:'Musso', creationDate: '20150103T00:00:00'});
-			$scope.books.push({id: '4', title:"Parce que je t'aime" , firstName:'Guillaume', lastName:'Musso', creationDate: '20140313T00:00:00'});
+		["$scope","$injector",
+		 function($scope, $injector) {
 			
+			var bookService = $injector.get("bookService");
+			
+			bookService.query(function(data) {						
+				$scope.books = data;						
+			}, function(error) {
+				console.log(error);
+			});
+											
 			$scope.addBook = function(book) {
 				if ($scope.bookForm.$valid) {
 					$scope.books.push(book);								
